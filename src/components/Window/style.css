@@ -1,0 +1,24 @@
+.title_container {
+  background: linear-gradient(to right, #000080, #1084d0);
+  height: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  color: white;
+  font-family: Arial, sans-serif;
+  letter-spacing: 1px;
+  font-size: 12px;
+  padding: 3px 0 3px 3px;
+}
+
+.buttons_container {
+  display: flex;
+  flex-direction: row;
+  padding: 2px;
+}
+
+.container {
+  padding: 2px;
+}
