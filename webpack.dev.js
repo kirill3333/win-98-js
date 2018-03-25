@@ -16,15 +16,31 @@ module.exports = {
     filename: 'bundle.js',
   },
   resolve: {
+    modules: [path.resolve('./src'), path.resolve('./node_modules')],
     extensions: ['.js', '.jsx', '.json'],
   },
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+              },
+            },
+          ],
+        }),
+      },
     ],
   },
-  plugins: [HtmlWebpackPluginConfig],
+  plugins: [HtmlWebpackPluginConfig, new ExtractTextPlugin('styles.css')],
 
   devtool: 'source-map',
 };
